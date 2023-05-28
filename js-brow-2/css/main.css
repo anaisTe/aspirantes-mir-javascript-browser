@@ -1,0 +1,106 @@
+body {
+    background-image: linear-gradient(to right top, #0559d1, #0091f9, #00bad7, #00d983, #a8eb12);
+    height: 100vh;
+}
+
+h1 {
+    color: darkblue !important;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+button {
+    border: none;
+    border-radius: 8px !important;
+    color: #fff;
+    padding: 8px 10px;
+}
+
+.addtaskContainer {
+    background-color: #F8F8F8;
+    border: none;
+    border-radius: 8px;
+    margin: auto;
+    padding: 10px 25px;
+    width: fit-content;
+}
+
+.addtaskContainer button {
+    background-color: #E95678;
+}
+
+.addtaskContainer input {
+    background-color: #F8F8F8;
+    border: none;
+    padding: 8px;
+}
+
+.taskList {
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 20px auto;
+}
+
+.taskList ul {
+    list-style: none;
+    margin: auto;
+    width: fit-content;
+}
+
+.taskList ul li {
+    align-items: center;
+    display: flex;
+    gap: 18px;
+    justify-content: left;
+    margin: 0;
+    padding: 20px 0 0px;
+}
+
+.taskList ul li:last-child {
+    padding-bottom: 20px
+}
+
+.taskList ul li label {
+    color: #16757f;
+    font-size: 20px;
+}
+
+.taskList ul li button {
+    background-color: #25B0BB;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+
+    font: inherit;
+    color: #16757f;
+    width: 1.5em;
+    height: 1.5em;
+    border: 0.15em solid #16757f;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+
+    display: grid;
+    place-content: center;  
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #16757f;
+
+    background-color: CanvasText;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+    border: none !important;
+    transform: scale(1);
+}

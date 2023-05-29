@@ -4,6 +4,12 @@ const btnAdd = document.getElementById('btnAdd');
 const taskList = document.querySelector('.taskList');
 const listTaskItem = document.getElementById('listTaskItem');
 
+let btnDeleteAll = document.createElement("button");
+btnDeleteAll.setAttribute("type", "button");
+btnDeleteAll.setAttribute("class", "btnDeleteAll");
+btnDeleteAll.innerHTML = "Eliminar tareas resueltas";
+taskList.appendChild(btnDeleteAll);
+
 
 btnAdd.addEventListener('click', function(event) {
     event.preventDefault();
@@ -19,6 +25,9 @@ btnAdd.addEventListener('click', function(event) {
 
         let inputCheck = document.createElement("input");
         inputCheck.setAttribute("type", "checkbox");
+        inputCheck.setAttribute("id", listTaskItem.childElementCount);
+        inputCheck.setAttribute("title", text);
+        inputCheck.setAttribute("completed", false);
         taskItem.appendChild(inputCheck);
 
         let labelCheck = document.createElement("label");
@@ -34,18 +43,30 @@ btnAdd.addEventListener('click', function(event) {
 
         inputCheck.addEventListener('change', function() {
             if (inputCheck.checked) {
-                labelCheck.style.textDecoration = 'line-through';
+                inputCheck.setAttribute("completed", true);
+                labelCheck.classList.add("is-completed");
             } else {
-                labelCheck.style.textDecoration = 'none';
+                inputCheck.setAttribute("completed", false);
+                labelCheck.classList.remove("is-completed");
             }
         })
 
         btnDelete.addEventListener('click', function() {
             taskItem.parentNode.removeChild(taskItem);
         })
-        
-        
+
+        document.querySelector(".btnDeleteAll").addEventListener('click', function(e) {
+            e.preventDefault();
+            let statusInput = inputCheck.getAttribute("completed");
+            
+            if (statusInput == "true") {
+                if(taskItem.parentNode) {
+                    taskItem.parentNode.removeChild(taskItem);
+                }
+            }
+        })
     }
 
 
 })
+
